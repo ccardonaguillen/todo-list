@@ -1,0 +1,93 @@
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    display: grid;
+    grid-template: 100px 1fr 50px / 300px 1fr;
+    grid-template-areas: 
+        "header header"
+        "nav main"
+        "footer footer";
+    margin: 0;
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* HEADER */
+
+header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr;
+    align-items: center;
+    background-color: blue;
+    color: white;
+}
+
+header a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+#hero-text {
+    font-size: 3rem;
+    color: white;
+}
+
+/* NAV */
+
+nav {
+    grid-area: nav;
+    background-color: lightblue;
+}
+
+/* MAIN */
+
+main {
+    grid-area: main;
+    background-color: white;
+}
+
+/* FOOTER */
+
+footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    color: white;
+}
+
+footer a {
+    display: flex;
+    align-items: center;
+    
+}
+
+/* MODAL */
+
+#modal-overlay {
+    z-index: 20;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000099;
+}
+
+#new-task-modal {
+    box-sizing: content-box;
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%) scale(1);
+    width: min(850px, 80%);
+    background-color: lightgrey;
+}
