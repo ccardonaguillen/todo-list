@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-list</title>
+    <script src="bundle.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="#" alt="Collapse navbar" id="collapse-nav">
+        <div id="hero-container">
+            <a href="">
+                <img id="hero-logo" src="#" alt="Hero">
+                <p id="hero-text">TO-DO LIST</p>
+            </a>
+        </div>
+        <div id="search-bar">
+            <form name="search-task">
+                <label for="search">Search:</label>
+                <input type="text" name="search" id="search">
+            </form>
+        </div>
+        <button id="new-task">New Task</button>
+    </header>
+    <nav>
+        <div>
+            <div value="home" class="nav-item">
+                <img src="#" alt="Home">
+                <p>Home</p>
+            </div>
+            <div value="today" class="nav-item">
+                <img src="#" alt="Today">
+                <p>Today</p>
+            </div>
+            <div value="upcoming" class="nav-item">
+                <img src="#" alt="Upcoming">
+                <p>Upcoming</p>
+            </div>
+            <div value="projects" class="nav-item">
+                <img src="#" alt="Projects">
+                <p>Important</p>
+            </div>
+        </div>
+        <div>
+            <div value="projects" class="nav-item">
+                <img src="#" alt="Projects">
+                <p>Projects</p>
+            </div>
+            <ul>
+                <li class="project-item">
+                    <img src="" alt="">
+                    <p></p>
+                </li>
+                <li class="project-item">
+                    <img src="" alt="">
+                    <p></p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main></main>
+    <footer>
+        Designed and created by&nbsp;
+        <a href="https://github.com/ccardonaguillen">
+            Carlos Cardona
+            <!-- <img src="../media/github.svg" alt="Github"> -->
+        </a>
+    </footer>
+    <div id="modal-overlay" class="hidden">
+        <div id="new-task-modal">
+            <form id="new-task-form">
+                <div>
+                    <input type="text" name="title" id="task-title">
+                    <input type="date" name="dueDate" id="task-due-date">
+                </div>
+                <div>
+                    <div>
+                        <label>Tags:</label>
+                        <input type="text" name="tags" id="task-tags">
+                    </div>
+                    <select name="priority" id="task-prio">
+                        <option value=0>Low</option>
+                        <option value=1>Normal</option>
+                        <option value=2>Important</option>
+                        <option value=3>Urgent</option>
+                    </select>
+                </div>
+            
+                <button type="submit" id="submit-form">Add Task</button>
+                <button type="reset" id="reset-form">Cancel</button>
+                <textarea name="details" id="task-details" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
