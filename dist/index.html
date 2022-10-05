@@ -1,64 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-list</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
     <script src="bundle.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
-        <img src="#" alt="Collapse navbar" id="collapse-nav">
-        <div id="hero-container">
+        <img src="./media/menu.svg" alt="Collapse navbar" id="collapse-nav">
+        <div id="hero">
             <a href="">
-                <img id="hero-logo" src="#" alt="Hero">
-                <p id="hero-text">TO-DO LIST</p>
+                <img src="./media/sticker-check.svg" alt="Hero">
+                <p>TO-DO LIST</p>
             </a>
         </div>
         <div id="search-bar">
             <form name="search-task">
-                <label for="search">Search:</label>
                 <input type="text" name="search" id="search">
             </form>
         </div>
-        <button id="new-task">New Task</button>
+        <button id="new-task">
+            <img src="./media/plus-thick.svg">
+            <p>New Task</p>
+        </button>
     </header>
     <nav>
         <div>
             <div value="home" class="nav-item">
-                <img src="#" alt="Home">
+                <img src="./media/inbox-arrow-down.svg" alt="Home">
                 <p>Home</p>
+                <div class="counter">0</div>
             </div>
             <div value="today" class="nav-item">
-                <img src="#" alt="Today">
+                <img src="./media/calendar-today.svg" alt="Today">
                 <p>Today</p>
+                <div class="counter">0</div>
             </div>
             <div value="upcoming" class="nav-item">
-                <img src="#" alt="Upcoming">
+                <img src="./media/calendar-week.svg" alt="Upcoming">
                 <p>Upcoming</p>
+                <div class="counter">0</div>
             </div>
-            <div value="projects" class="nav-item">
-                <img src="#" alt="Projects">
+            <div value="important" class="nav-item">
+                <img src="./media/alert-box-outline.svg" alt="Important">
                 <p>Important</p>
+                <div class="counter">0</div>
             </div>
         </div>
         <div>
-            <div value="projects" class="nav-item">
-                <img src="#" alt="Projects">
-                <p>Projects</p>
+            <p id="nav-projects">Projects</p>
+            <div id="project-list">
+                <div class="project-item">
+                    <img src="./media/list-bulleted.svg" alt="">
+                    <p>asdas</p>
+                    <img src="./media/window-close.svg" class="close-project" />
+                </div>
+                <div class="project-item">
+                    <img src="./media/list-bulleted.svg" alt="">
+                    <p>asdasd</p>
+                    <img src="./media/window-close.svg" class="close-project" />
+                </div>
             </div>
-            <ul>
-                <li class="project-item">
-                    <img src="" alt="">
-                    <p></p>
-                </li>
-                <li class="project-item">
-                    <img src="" alt="">
-                    <p></p>
-                </li>
-            </ul>
         </div>
     </nav>
     <main></main>
@@ -70,30 +89,44 @@
         </a>
     </footer>
     <div id="modal-overlay" class="hidden">
-        <div id="new-task-modal">
+        <div id="task-modal">
             <form id="new-task-form">
                 <div>
-                    <input type="text" name="title" id="task-title">
-                    <input type="date" name="dueDate" id="task-due-date">
+                    <input type="text" name="title" id="task-title" placeholder="Title" autocomplete="off">
                 </div>
-                <div>
+                <textarea name="details" id="task-details" placeholder="Details (optional)" rows="3" ></textarea>
+                <div class="options-container">
                     <div>
-                        <label>Tags:</label>
-                        <input type="text" name="tags" id="task-tags">
+                        <label for="task-tags">Project:</label>
+                        <input type="text" name="project" id="task-project" autocomplete="off">
                     </div>
-                    <select name="priority" id="task-prio">
-                        <option value=0>Low</option>
-                        <option value=1>Normal</option>
-                        <option value=2>Important</option>
-                        <option value=3>Urgent</option>
-                    </select>
+                    <!-- <div>
+                        <label for="task-tags">Tags:</label>
+                        <input type="text" name="tags" id="task-tags" autocomplete="off">
+                    </div> -->
+                    <div>
+                        <label for="task-prio">Priority:</label>
+                        <div class="select">
+                            <select name="priority" id="task-prio">
+                                <option value=0>0 - Low</option>
+                                <option value=1>1 - Normal</option>
+                                <option value=2>2 - Important</option>
+                                <option value=3>3 - Urgent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="task-due-date">Due date:</label>
+                        <input type="date" name="dueDate" id="task-due-date">
+                    </div>
                 </div>
-            
-                <button type="submit" id="submit-form">Add Task</button>
-                <button type="reset" id="reset-form">Cancel</button>
-                <textarea name="details" id="task-details" cols="30" rows="10"></textarea>
+                <div class="buttons-container">
+                    <button type="reset" id="reset-form">Cancel</button>
+                    <button type="submit" id="submit-form">Add Task</button>
+                </div>
             </form>
         </div>
     </div>
 </body>
+
 </html>

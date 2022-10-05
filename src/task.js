@@ -1,7 +1,7 @@
 var Task = ({title, date, details, priority, tags, project}) => {
     return {
         title: title || "",
-        date: new Date(date),
+        date: date || "No date",
         details: details || "",
         priority: priority || 0,
         tags: tags || [],

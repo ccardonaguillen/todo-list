@@ -54,14 +54,26 @@ var taskListView = (function (taskList) {
     function _renderItem(task) {
         if (!_filterTask(task)) return;
 
+        const priorityColor = { 0: "white", 1: "blue", 2: "orange", 3: "red" };
+
         const container = $("<div>").addClass("list-item");
         list = $("main> div");
 
-        $("<p>").css({ color: "red" }).text(task.title).appendTo(container);
-        $("<p>").css({ color: "blue" }).text(task.priority).appendTo(container);
-        $("<p>").css({ color: "green" }).text(task.date).appendTo(container);
+        $("<input>")
+            .attr("type", "checkbox")
+            .addClass("checkbox")
+            .appendTo(container)
+            .on("change", _changeTaskStatus)
+        $("<p>").text(task.title).addClass("item-title").appendTo(container);
+        $("<div>")
+            .attr("data-priority", task.priority)
+            .addClass("item-prio")
+            .css({ "background-color": priorityColor[task.priority] })
+            .appendTo(container);
+        $("<p>").text(task.date).addClass("item-date").appendTo(container);
 
         container.appendTo(list);
+
     }
 
     function _switchTab(tab) {
@@ -80,12 +92,12 @@ var taskListView = (function (taskList) {
                 break;
         }
 
-        _renderTaskList()
+        _renderTaskList();
     }
 
     function _filterTask(task) {
         if (taskFilter.filter === "date") {
-            var msecs = task.date - new Date;
+            var msecs = new Date(task.date) - new Date();
             var days = msecs / (1000 * 60 * 60 * 24);
             return Math.floor(days) <= taskFilter.value;
         } else if (taskFilter.filter === "project") {
@@ -94,7 +106,26 @@ var taskListView = (function (taskList) {
 
         return true;
     }
+
+    function _changeTaskStatus(e) {
+        const title = $(e.currentTarget).parent().find("p");
+        title.toggleClass("completed")
+    }
 })();
+
+function _renderIcon(url) {
+    var $svg;
+    $.get(
+        url,
+        function (data) {
+            $svg = $(data).find("svg");
+            $svg = $svg.removeAttr("xmlns:a");
+            console.log($svg);
+        },
+        "xml"
+    );
+    return $svg;
+}
 
 var taskListController = (function (taskList) {})();
 

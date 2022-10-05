@@ -21,3 +21,29 @@ import Task from "./task.js";
     TaskList.addTask(Task({ title: "This is a test", date: "2022-10-08" }));
     TaskList.addTask(Task({ title: "This is a test", date: "2022-10-25" }));
 })();
+
+/* Replace all imgs with their svg */
+$(function () {
+    $("img[src$='.svg']").each(function () {
+        var $img = $(this);
+        var imgURL = $img.attr("src");
+
+        $.get(
+            imgURL,
+            function (data) {
+                // Get the SVG tag, ignore the rest
+                var $svg = $(data).find("svg");
+
+                // Remove any invalid XML tags
+                $svg = $svg.removeAttr("xmlns:a");
+
+                $svg.attr("id", $img.attr("id"));
+                $svg.attr("class", $img.attr("class"));
+
+                // Replace IMG with SVG
+                $img.replaceWith($svg);
+            },
+            "xml"
+        );
+    });
+});

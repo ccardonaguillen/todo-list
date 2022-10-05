@@ -13,12 +13,13 @@ var home = (function () {
     function _render(tab) {
         _clear()
 
-        var header = $("<p>")
+        $("<p>")
             .text(tab)
             .css({ "color": "black"} )
+            .addClass("header")
             .appendTo(main)
-        var list = $("<div>")
-            .css({"width": "100%", "background-color": "grey"})
+        $("<div>")
+            .addClass("tasklist-container")
             .appendTo(main)
 
         events.emit("tabSwitched", tab);
